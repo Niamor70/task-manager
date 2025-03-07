@@ -9,7 +9,7 @@ if ( isset($_POST['del']) && !empty($_POST['del']) ) {
 
 // traitement du formulaire d'ajout d'une tâche
 if ( isset($_POST['task']) && !empty($_POST['task']) ) {
-    $filename = 'tasks/'.hrtime(true).'.txt';
+    $filename = 'tasks/'.time().'.txt';
 
     /*
     // méthode 1 avec fwrite
@@ -53,7 +53,11 @@ foreach (glob("tasks/*.txt") as $filename) {
     $handle = fopen($filename, "r");
     $contents = fread($handle, filesize($filename));
     fclose($handle);
-    echo '<div>'.$contents;
+    echo '<div>';
+    $time = explode("/", $filename);
+    echo date("d/m/Y H:i:s", intval($time[1])).' : ';
+    //echo '01/01/2025 00:00 : ';
+    echo $contents;
     // lien de suppression avec methode GET
     //echo '<a href="index.php?del='.$filename.'">supprimer</a>';
     // suppression avec un formulaire et methode POST
