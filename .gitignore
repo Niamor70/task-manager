@@ -1,0 +1,6 @@
+# config phpstorm
+/.idea/
+
+# on garde le dossier tasks mais pas ses fichiers
+/tasks/*
+!/tasks/.gitkeep
